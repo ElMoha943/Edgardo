@@ -9,9 +9,9 @@ namespace Edgardo
 {
     public abstract class DB
     {
-        private readonly string connectionstring = "Server=(local); DataBase = dashboard; Integrated Security=true" ;
+        private readonly string connectionstring = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=dashboard;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-        private SqlConnection GetConnection()
+        public SqlConnection GetConnection()
         {
             return new SqlConnection(connectionstring);
         }
