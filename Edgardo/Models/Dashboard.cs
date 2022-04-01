@@ -23,9 +23,6 @@ namespace Edgardo.Models
         public decimal Ingresos = 0;
         public decimal Ganancias = 0;
 
-        public List<KeyValuePair<string,int>> TopProducts { get; set; }
-        public List<KeyValuePair<string, int>> UnderStockProducts { get; set; }
-
         //Constructor
         public Dashboard()
         {
@@ -136,6 +133,31 @@ namespace Edgardo.Models
                     while (reader.Read())
                     {
                         resultTable.Add(new KeyValuePair<string, int>((string)reader[1],(int)reader[3]));
+                    }
+                    return resultTable;
+                }
+            }
+        }
+
+        public List<KeyValuePair<string,int>> GetTopProducts()
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand())
+                {
+                    command.Connection = connection;
+
+                    command.CommandText = @"SELECT TOP 5 Producto.nombre, sum(Venta_Productos.cant_producto) as cant
+                                            FROM Venta_Productos 
+                                            INNER JOIN Producto ON Producto.id=Venta_Productos.id_producto
+                                            group by Producto.nombre
+                                            order by cant desc ";
+                    var reader = command.ExecuteReader();
+                    var resultTable = new List<KeyValuePair<string, int>>();
+                    while (reader.Read())
+                    {
+                        resultTable.Add(new KeyValuePair<string, int>((string)reader[0], (int)reader[1]));
                     }
                     return resultTable;
                 }
