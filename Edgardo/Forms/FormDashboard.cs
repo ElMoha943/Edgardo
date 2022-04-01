@@ -52,6 +52,7 @@ namespace Edgardo
             //COUNT LABELS
             labelTotalClients.Text = dboard.NumClientes.ToString();
             labelTotalProducts.Text = dboard.NumProductos.ToString();
+            labelTotalProviders.Text = dboard.NumProveedores.ToString();
             labelCountSales.Text = dboard.NumVentas.ToString();
             labelCountIncome.Text = "$ " + dboard.Ingresos.ToString();
             labelCountProfit.Text = "$ "+ dboard.Ganancias.ToString();

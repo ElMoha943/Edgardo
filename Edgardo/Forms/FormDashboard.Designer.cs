@@ -42,17 +42,23 @@
             this.labelPercentageSales = new System.Windows.Forms.Label();
             this.labelCountSales = new System.Windows.Forms.Label();
             this.labelSales = new System.Windows.Forms.Label();
+            this.ipbSales = new FontAwesome.Sharp.IconPictureBox();
             this.panelCounIncome = new System.Windows.Forms.Panel();
             this.labelPercentageIncome = new System.Windows.Forms.Label();
             this.labelCountIncome = new System.Windows.Forms.Label();
+            this.ipbIncome = new FontAwesome.Sharp.IconPictureBox();
             this.labelIncome = new System.Windows.Forms.Label();
             this.panelCounProfit = new System.Windows.Forms.Panel();
             this.labelPercentageProfit = new System.Windows.Forms.Label();
             this.labelCountProfit = new System.Windows.Forms.Label();
+            this.ipbProfit = new FontAwesome.Sharp.IconPictureBox();
             this.labelProfit = new System.Windows.Forms.Label();
             this.panelSales = new System.Windows.Forms.Panel();
             this.chartSales = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panelTotals = new System.Windows.Forms.Panel();
+            this.ipbProducts = new FontAwesome.Sharp.IconPictureBox();
+            this.ipbProviders = new FontAwesome.Sharp.IconPictureBox();
+            this.ipbClients = new FontAwesome.Sharp.IconPictureBox();
             this.labelTotalProducts = new System.Windows.Forms.Label();
             this.labelProducts = new System.Windows.Forms.Label();
             this.labelTotalProviders = new System.Windows.Forms.Label();
@@ -66,34 +72,28 @@
             this.dgvLowStock = new System.Windows.Forms.DataGridView();
             this.panelTopProducts = new System.Windows.Forms.Panel();
             this.chartTopProducts = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.labelTitle = new System.Windows.Forms.Label();
             this.btnFilterYear = new System.Windows.Forms.Button();
             this.btnFilterMonth = new System.Windows.Forms.Button();
             this.btnFilterWeek = new System.Windows.Forms.Button();
             this.btnFilterDay = new System.Windows.Forms.Button();
-            this.ipbProducts = new FontAwesome.Sharp.IconPictureBox();
-            this.ipbProviders = new FontAwesome.Sharp.IconPictureBox();
-            this.ipbClients = new FontAwesome.Sharp.IconPictureBox();
-            this.ipbProfit = new FontAwesome.Sharp.IconPictureBox();
-            this.ipbIncome = new FontAwesome.Sharp.IconPictureBox();
-            this.ipbSales = new FontAwesome.Sharp.IconPictureBox();
+            this.labelTitle = new System.Windows.Forms.Label();
             this.panelCountSales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbSales)).BeginInit();
             this.panelCounIncome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbIncome)).BeginInit();
             this.panelCounProfit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbProfit)).BeginInit();
             this.panelSales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSales)).BeginInit();
             this.panelTotals.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbProducts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbProviders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbClients)).BeginInit();
             this.panelLowStock.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLowStock)).BeginInit();
             this.panelTopProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartTopProducts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbProducts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbProviders)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbClients)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbProfit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbIncome)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbSales)).BeginInit();
             this.SuspendLayout();
             // 
             // panelCountSales
@@ -139,6 +139,21 @@
             this.labelSales.TabIndex = 10;
             this.labelSales.Text = "Ventas";
             // 
+            // ipbSales
+            // 
+            this.ipbSales.BackColor = System.Drawing.Color.GhostWhite;
+            this.ipbSales.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ipbSales.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.ipbSales.IconChar = FontAwesome.Sharp.IconChar.ShoppingBasket;
+            this.ipbSales.IconColor = System.Drawing.Color.MediumSpringGreen;
+            this.ipbSales.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipbSales.IconSize = 50;
+            this.ipbSales.Location = new System.Drawing.Point(0, 0);
+            this.ipbSales.Name = "ipbSales";
+            this.ipbSales.Size = new System.Drawing.Size(50, 50);
+            this.ipbSales.TabIndex = 0;
+            this.ipbSales.TabStop = false;
+            // 
             // panelCounIncome
             // 
             this.panelCounIncome.BackColor = System.Drawing.Color.GhostWhite;
@@ -171,6 +186,21 @@
             this.labelCountIncome.Size = new System.Drawing.Size(21, 16);
             this.labelCountIncome.TabIndex = 14;
             this.labelCountIncome.Text = "53";
+            // 
+            // ipbIncome
+            // 
+            this.ipbIncome.BackColor = System.Drawing.Color.GhostWhite;
+            this.ipbIncome.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ipbIncome.ForeColor = System.Drawing.Color.Crimson;
+            this.ipbIncome.IconChar = FontAwesome.Sharp.IconChar.ChartLine;
+            this.ipbIncome.IconColor = System.Drawing.Color.Crimson;
+            this.ipbIncome.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipbIncome.IconSize = 50;
+            this.ipbIncome.Location = new System.Drawing.Point(0, 0);
+            this.ipbIncome.Name = "ipbIncome";
+            this.ipbIncome.Size = new System.Drawing.Size(50, 50);
+            this.ipbIncome.TabIndex = 1;
+            this.ipbIncome.TabStop = false;
             // 
             // labelIncome
             // 
@@ -214,6 +244,21 @@
             this.labelCountProfit.Size = new System.Drawing.Size(21, 16);
             this.labelCountProfit.TabIndex = 17;
             this.labelCountProfit.Text = "53";
+            // 
+            // ipbProfit
+            // 
+            this.ipbProfit.BackColor = System.Drawing.Color.GhostWhite;
+            this.ipbProfit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ipbProfit.ForeColor = System.Drawing.Color.BlueViolet;
+            this.ipbProfit.IconChar = FontAwesome.Sharp.IconChar.MoneyBillWaveAlt;
+            this.ipbProfit.IconColor = System.Drawing.Color.BlueViolet;
+            this.ipbProfit.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipbProfit.IconSize = 50;
+            this.ipbProfit.Location = new System.Drawing.Point(0, 0);
+            this.ipbProfit.Name = "ipbProfit";
+            this.ipbProfit.Size = new System.Drawing.Size(50, 50);
+            this.ipbProfit.TabIndex = 2;
+            this.ipbProfit.TabStop = false;
             // 
             // labelProfit
             // 
@@ -284,6 +329,48 @@
             this.panelTotals.Name = "panelTotals";
             this.panelTotals.Size = new System.Drawing.Size(175, 180);
             this.panelTotals.TabIndex = 3;
+            // 
+            // ipbProducts
+            // 
+            this.ipbProducts.BackColor = System.Drawing.Color.GhostWhite;
+            this.ipbProducts.ForeColor = System.Drawing.Color.DarkViolet;
+            this.ipbProducts.IconChar = FontAwesome.Sharp.IconChar.Boxes;
+            this.ipbProducts.IconColor = System.Drawing.Color.DarkViolet;
+            this.ipbProducts.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipbProducts.IconSize = 50;
+            this.ipbProducts.Location = new System.Drawing.Point(3, 127);
+            this.ipbProducts.Name = "ipbProducts";
+            this.ipbProducts.Size = new System.Drawing.Size(50, 50);
+            this.ipbProducts.TabIndex = 18;
+            this.ipbProducts.TabStop = false;
+            // 
+            // ipbProviders
+            // 
+            this.ipbProviders.BackColor = System.Drawing.Color.GhostWhite;
+            this.ipbProviders.ForeColor = System.Drawing.Color.Crimson;
+            this.ipbProviders.IconChar = FontAwesome.Sharp.IconChar.Truck;
+            this.ipbProviders.IconColor = System.Drawing.Color.Crimson;
+            this.ipbProviders.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipbProviders.IconSize = 50;
+            this.ipbProviders.Location = new System.Drawing.Point(3, 78);
+            this.ipbProviders.Name = "ipbProviders";
+            this.ipbProviders.Size = new System.Drawing.Size(50, 50);
+            this.ipbProviders.TabIndex = 17;
+            this.ipbProviders.TabStop = false;
+            // 
+            // ipbClients
+            // 
+            this.ipbClients.BackColor = System.Drawing.Color.GhostWhite;
+            this.ipbClients.ForeColor = System.Drawing.Color.MediumSpringGreen;
+            this.ipbClients.IconChar = FontAwesome.Sharp.IconChar.Users;
+            this.ipbClients.IconColor = System.Drawing.Color.MediumSpringGreen;
+            this.ipbClients.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ipbClients.IconSize = 50;
+            this.ipbClients.Location = new System.Drawing.Point(3, 28);
+            this.ipbClients.Name = "ipbClients";
+            this.ipbClients.Size = new System.Drawing.Size(50, 50);
+            this.ipbClients.TabIndex = 13;
+            this.ipbClients.TabStop = false;
             // 
             // labelTotalProducts
             // 
@@ -471,16 +558,6 @@
             title1.Text = "Prodcutos Mas Vendidos";
             this.chartTopProducts.Titles.Add(title1);
             // 
-            // labelTitle
-            // 
-            this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(7, 9);
-            this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(115, 16);
-            this.labelTitle.TabIndex = 5;
-            this.labelTitle.Text = "Panel de Control";
-            // 
             // btnFilterYear
             // 
             this.btnFilterYear.BackColor = System.Drawing.Color.Transparent;
@@ -537,92 +614,15 @@
             this.btnFilterDay.Text = "Diario";
             this.btnFilterDay.UseVisualStyleBackColor = false;
             // 
-            // ipbProducts
+            // labelTitle
             // 
-            this.ipbProducts.BackColor = System.Drawing.Color.GhostWhite;
-            this.ipbProducts.ForeColor = System.Drawing.Color.DarkViolet;
-            this.ipbProducts.IconChar = FontAwesome.Sharp.IconChar.Boxes;
-            this.ipbProducts.IconColor = System.Drawing.Color.DarkViolet;
-            this.ipbProducts.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ipbProducts.IconSize = 50;
-            this.ipbProducts.Location = new System.Drawing.Point(3, 127);
-            this.ipbProducts.Name = "ipbProducts";
-            this.ipbProducts.Size = new System.Drawing.Size(50, 50);
-            this.ipbProducts.TabIndex = 18;
-            this.ipbProducts.TabStop = false;
-            // 
-            // ipbProviders
-            // 
-            this.ipbProviders.BackColor = System.Drawing.Color.GhostWhite;
-            this.ipbProviders.ForeColor = System.Drawing.Color.Crimson;
-            this.ipbProviders.IconChar = FontAwesome.Sharp.IconChar.Truck;
-            this.ipbProviders.IconColor = System.Drawing.Color.Crimson;
-            this.ipbProviders.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ipbProviders.IconSize = 50;
-            this.ipbProviders.Location = new System.Drawing.Point(3, 78);
-            this.ipbProviders.Name = "ipbProviders";
-            this.ipbProviders.Size = new System.Drawing.Size(50, 50);
-            this.ipbProviders.TabIndex = 17;
-            this.ipbProviders.TabStop = false;
-            // 
-            // ipbClients
-            // 
-            this.ipbClients.BackColor = System.Drawing.Color.GhostWhite;
-            this.ipbClients.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.ipbClients.IconChar = FontAwesome.Sharp.IconChar.Users;
-            this.ipbClients.IconColor = System.Drawing.Color.MediumSpringGreen;
-            this.ipbClients.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ipbClients.IconSize = 50;
-            this.ipbClients.Location = new System.Drawing.Point(3, 28);
-            this.ipbClients.Name = "ipbClients";
-            this.ipbClients.Size = new System.Drawing.Size(50, 50);
-            this.ipbClients.TabIndex = 13;
-            this.ipbClients.TabStop = false;
-            // 
-            // ipbProfit
-            // 
-            this.ipbProfit.BackColor = System.Drawing.Color.GhostWhite;
-            this.ipbProfit.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ipbProfit.ForeColor = System.Drawing.Color.BlueViolet;
-            this.ipbProfit.IconChar = FontAwesome.Sharp.IconChar.MoneyBillWaveAlt;
-            this.ipbProfit.IconColor = System.Drawing.Color.BlueViolet;
-            this.ipbProfit.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ipbProfit.IconSize = 50;
-            this.ipbProfit.Location = new System.Drawing.Point(0, 0);
-            this.ipbProfit.Name = "ipbProfit";
-            this.ipbProfit.Size = new System.Drawing.Size(50, 50);
-            this.ipbProfit.TabIndex = 2;
-            this.ipbProfit.TabStop = false;
-            // 
-            // ipbIncome
-            // 
-            this.ipbIncome.BackColor = System.Drawing.Color.GhostWhite;
-            this.ipbIncome.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ipbIncome.ForeColor = System.Drawing.Color.Crimson;
-            this.ipbIncome.IconChar = FontAwesome.Sharp.IconChar.ChartLine;
-            this.ipbIncome.IconColor = System.Drawing.Color.Crimson;
-            this.ipbIncome.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ipbIncome.IconSize = 50;
-            this.ipbIncome.Location = new System.Drawing.Point(0, 0);
-            this.ipbIncome.Name = "ipbIncome";
-            this.ipbIncome.Size = new System.Drawing.Size(50, 50);
-            this.ipbIncome.TabIndex = 1;
-            this.ipbIncome.TabStop = false;
-            // 
-            // ipbSales
-            // 
-            this.ipbSales.BackColor = System.Drawing.Color.GhostWhite;
-            this.ipbSales.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ipbSales.ForeColor = System.Drawing.Color.MediumSpringGreen;
-            this.ipbSales.IconChar = FontAwesome.Sharp.IconChar.ShoppingBasket;
-            this.ipbSales.IconColor = System.Drawing.Color.MediumSpringGreen;
-            this.ipbSales.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ipbSales.IconSize = 50;
-            this.ipbSales.Location = new System.Drawing.Point(0, 0);
-            this.ipbSales.Name = "ipbSales";
-            this.ipbSales.Size = new System.Drawing.Size(50, 50);
-            this.ipbSales.TabIndex = 0;
-            this.ipbSales.TabStop = false;
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Location = new System.Drawing.Point(7, 9);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(115, 16);
+            this.labelTitle.TabIndex = 5;
+            this.labelTitle.Text = "Panel de Control";
             // 
             // FormDashboard
             // 
@@ -648,26 +648,26 @@
             this.Load += new System.EventHandler(this.FormDashboard_Load);
             this.panelCountSales.ResumeLayout(false);
             this.panelCountSales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbSales)).EndInit();
             this.panelCounIncome.ResumeLayout(false);
             this.panelCounIncome.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbIncome)).EndInit();
             this.panelCounProfit.ResumeLayout(false);
             this.panelCounProfit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbProfit)).EndInit();
             this.panelSales.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartSales)).EndInit();
             this.panelTotals.ResumeLayout(false);
             this.panelTotals.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbProducts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbProviders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ipbClients)).EndInit();
             this.panelLowStock.ResumeLayout(false);
             this.panelLowStock.PerformLayout();
             this.panel10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLowStock)).EndInit();
             this.panelTopProducts.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartTopProducts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbProducts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbProviders)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbClients)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbProfit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbIncome)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ipbSales)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -681,7 +681,6 @@
         private System.Windows.Forms.Panel panelTotals;
         private System.Windows.Forms.Panel panelLowStock;
         private System.Windows.Forms.Panel panelTopProducts;
-        private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Button btnFilterYear;
         private System.Windows.Forms.Label labelPercentageSales;
         private System.Windows.Forms.Label labelCountSales;
@@ -713,6 +712,7 @@
         private FontAwesome.Sharp.IconPictureBox ipbProducts;
         private FontAwesome.Sharp.IconPictureBox ipbProviders;
         private FontAwesome.Sharp.IconPictureBox ipbClients;
+        private System.Windows.Forms.Label labelTitle;
     }
 }
 
