@@ -163,5 +163,28 @@ namespace Edgardo.Models
                 }
             }
         }
+
+        public Producto getProductById(string id)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                using (var command = new SqlCommand())
+                {
+                    command.Connection = connection;
+
+                    command.CommandText = @"SELECT * FROM PRODUCTO WHERE id=@id";
+                    command.Parameters.Add("@id", System.Data.SqlDbType.VarChar).Value = id;
+                    var reader = command.ExecuteReader();
+                    return new Producto
+                    {
+                        Id = (string)reader[0],
+                        Name = (string)reader[1],
+                        Price = (decimal)reader[2],
+                        Stock = (int)reader[3],
+                    };
+                }
+            }
+        }
     }
 }

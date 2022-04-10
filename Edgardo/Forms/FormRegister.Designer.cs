@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRegister));
             this.textBoxCodigo = new RJCodeAdvance.RJControls.RJTextBox();
             this.btnAdd = new FontAwesome.Sharp.IconButton();
             this.btnRemove = new FontAwesome.Sharp.IconButton();
@@ -40,6 +41,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvTicket = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTicket)).BeginInit();
             this.panel1.SuspendLayout();
@@ -66,6 +69,7 @@
             this.textBoxCodigo.TabIndex = 0;
             this.textBoxCodigo.Texts = "Codigo del producto...";
             this.textBoxCodigo.UnderlinedStyle = false;
+            this.textBoxCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCodigo_KeyPress);
             // 
             // btnAdd
             // 
@@ -109,6 +113,7 @@
             this.btnPrint.Size = new System.Drawing.Size(118, 50);
             this.btnPrint.TabIndex = 5;
             this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // labelNombre
             // 
@@ -202,6 +207,20 @@
             this.panel1.Size = new System.Drawing.Size(500, 274);
             this.panel1.TabIndex = 1;
             // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // FormRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,5 +256,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dgvTicket;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }
