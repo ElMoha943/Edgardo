@@ -176,13 +176,18 @@ namespace Edgardo.Models
                     command.CommandText = @"SELECT * FROM PRODUCTO WHERE id=@id";
                     command.Parameters.Add("@id", System.Data.SqlDbType.VarChar).Value = id;
                     var reader = command.ExecuteReader();
-                    return new Producto
+                    Producto p = new Producto();
+                    while (reader.Read())
                     {
-                        Id = (string)reader[0],
-                        Name = (string)reader[1],
-                        Price = (decimal)reader[2],
-                        Stock = (int)reader[3],
-                    };
+                        p =new Producto
+                        {
+                            Id = (string)reader[0],
+                            Name = (string)reader[1],
+                            Price = (decimal)reader[2],
+                            Stock = (int)reader[3],
+                        };
+                    }
+                    return p;
                 }
             }
         }

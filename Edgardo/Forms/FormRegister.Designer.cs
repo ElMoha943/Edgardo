@@ -191,6 +191,11 @@
             // 
             // dgvTicket
             // 
+            this.dgvTicket.AllowUserToAddRows = false;
+            this.dgvTicket.AllowUserToDeleteRows = false;
+            this.dgvTicket.AllowUserToResizeColumns = false;
+            this.dgvTicket.AllowUserToResizeRows = false;
+            this.dgvTicket.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTicket.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTicket.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTicket.Location = new System.Drawing.Point(0, 0);
