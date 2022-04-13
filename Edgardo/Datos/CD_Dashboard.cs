@@ -151,7 +151,7 @@ namespace Edgardo.Models
 
                     command.CommandText = @"SELECT TOP 5 Producto.nombre, sum(Venta_Productos.cant_producto) as cant
                                             FROM Venta_Productos 
-                                            INNER JOIN Producto ON Producto.id=Venta_Productos.id_producto
+                                            INNER JOIN Producto ON Producto.nombre=Venta_Productos.id_producto
                                             group by Producto.nombre
                                             order by cant desc ";
                     var reader = command.ExecuteReader();

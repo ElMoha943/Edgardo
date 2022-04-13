@@ -70,6 +70,7 @@
             this.textBoxCodigo.Texts = "Codigo del producto...";
             this.textBoxCodigo.UnderlinedStyle = false;
             this.textBoxCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCodigo_KeyPress);
+            this.textBoxCodigo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxCodigo_MouseClick);
             // 
             // btnAdd
             // 
@@ -122,9 +123,9 @@
             this.labelNombre.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNombre.Location = new System.Drawing.Point(5, 5);
             this.labelNombre.Name = "labelNombre";
-            this.labelNombre.Size = new System.Drawing.Size(316, 41);
+            this.labelNombre.Size = new System.Drawing.Size(179, 41);
             this.labelNombre.TabIndex = 6;
-            this.labelNombre.Text = "Nombre Producto";
+            this.labelNombre.Text = "Producto:";
             // 
             // labelCosto
             // 
@@ -133,9 +134,9 @@
             this.labelCosto.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCosto.Location = new System.Drawing.Point(6, 46);
             this.labelCosto.Name = "labelCosto";
-            this.labelCosto.Size = new System.Drawing.Size(93, 33);
+            this.labelCosto.Size = new System.Drawing.Size(100, 33);
             this.labelCosto.TabIndex = 7;
-            this.labelCosto.Text = "Costo";
+            this.labelCosto.Text = "Costo:";
             // 
             // labelTotal
             // 

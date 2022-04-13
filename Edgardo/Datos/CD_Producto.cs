@@ -21,6 +21,7 @@ namespace Edgardo.Datos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
+                    command.Connection = connection;
                     command.CommandText = "SELECT * FROM producto";
                     leer = command.ExecuteReader();
                     tabla.Load(leer);
@@ -37,7 +38,7 @@ namespace Edgardo.Datos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
-                    //insert into productos values('coca','1 litro','Cocacola',100,10);
+                    command.Connection = connection;
                     command.CommandText = @"INSERT INTO producto VALUES(@id,@nombre,@precio,@stock)";
                     command.Parameters.Add("@id", System.Data.SqlDbType.VarChar).Value = id;
                     command.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = nombre;
@@ -57,6 +58,7 @@ namespace Edgardo.Datos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
+                    command.Connection = connection;
                     command.CommandText = @"UPDATE producto SET nombre=@nombre, precio=@precio, stock=@stock WHERE id =@id";
                     command.Parameters.Add("@id", System.Data.SqlDbType.VarChar).Value = id;
                     command.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = nombre;
@@ -75,6 +77,7 @@ namespace Edgardo.Datos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
+                    command.Connection = connection;
                     command.CommandText = @"DELETE FROM producto WHERE id=@id";
                     command.Parameters.Add("@id", System.Data.SqlDbType.VarChar).Value = id;
                     command.ExecuteNonQuery();
@@ -90,6 +93,7 @@ namespace Edgardo.Datos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
+                    command.Connection = connection;
                     command.CommandText = @"SELECT * FROM producto WHERE id=@id";
                     command.Parameters.Add("@id", System.Data.SqlDbType.VarChar).Value = id;
                     leer = command.ExecuteReader();
