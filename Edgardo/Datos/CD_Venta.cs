@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Edgardo.Forms;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -30,19 +31,30 @@ namespace Edgardo.Datos
         }
 
         //CREA UN VENTA NUEVO
-        public void Insertar(DateTime fecha, decimal total)
+        public void Insertar(DateTime fecha, decimal total, List<product> products)
         {
+            int id_venta;
             using (var connection = GetConnection())
             {
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
-                    //insert into ventas values('coca','1 litro','Cocacola',100,10);
-                    command.CommandText = @"INSERT INTO ventas VALUES(@fecha,@total)";
+                    //INSERTAMOS LA VENTA
+                    command.CommandText = @"INSERT INTO venta VALUES(@fecha,@total)";
                     command.Parameters.Add("@fecha", System.Data.SqlDbType.DateTime).Value = fecha;
                     command.Parameters.Add("@total", System.Data.SqlDbType.Decimal).Value = total;
-                    command.ExecuteNonQuery();
+                    id_venta = command.ExecuteNonQuery();
                     command.Parameters.Clear();
+
+                    //INSERTAMOS LOS PRODUCTOS VENDIDOS
+                    command.CommandText = @"INSERT INTO venta_producto VALUES(@id_venta,id_producto,@cant_producto)";
+                    command.Parameters.Add("@id_venta", System.Data.SqlDbType.Int).Value = id_venta;
+                    foreach (product p in products)
+                    {
+                        command.Parameters.Add("@id_producto", System.Data.SqlDbType.VarChar).Value = p.Name;
+                        command.Parameters.Add("@cant_producto", System.Data.SqlDbType.Int).Value = p.Quantity;
+                        command.ExecuteNonQuery();
+                    }
                 }
             }
         }
@@ -55,7 +67,7 @@ namespace Edgardo.Datos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
-                    command.CommandText = @"UPDATE ventas SET fecha=@fecha, total=@total, stock=@stock WHERE id =@id";
+                    command.CommandText = @"UPDATE venta SET fecha=@fecha, total=@total, stock=@stock WHERE id =@id";
                     command.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
                     command.Parameters.Add("@nombre", System.Data.SqlDbType.DateTime).Value = fecha;
                     command.Parameters.Add("@precio", System.Data.SqlDbType.Decimal).Value = total;
@@ -72,7 +84,7 @@ namespace Edgardo.Datos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
-                    command.CommandText = @"DELETE FROM ventas WHERE id=@id";
+                    command.CommandText = @"DELETE FROM venta WHERE id=@id";
                     command.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
                     command.ExecuteNonQuery();
                 }
@@ -87,7 +99,7 @@ namespace Edgardo.Datos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
-                    command.CommandText = @"SELECT * FROM ventas WHERE id=@id";
+                    command.CommandText = @"SELECT * FROM venta WHERE id=@id";
                     command.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
                     leer = command.ExecuteReader();
                     tabla.Load(leer);

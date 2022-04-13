@@ -21,7 +21,8 @@ namespace Edgardo.Forms
     }
     public partial class FormRegister : Form
     {
-        CD_Producto db = new CD_Producto();
+        CD_Producto cdp = new CD_Producto();
+        CD_Venta cdv = new CD_Venta();
         DataTable busqueda;
         List<product> products = new List<product>();
         public decimal total = 0;
@@ -41,13 +42,8 @@ namespace Edgardo.Forms
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.ShowDialog();
 
-            Venta v = new Venta
-            {
-                Fecha = DateTime.Now,
-                Total = total
-            };
-
             //Insertar venta en base de datos!
+            cdv.Insertar(DateTime.Now, total, products);
 
             total = 0;
         }
@@ -57,7 +53,7 @@ namespace Edgardo.Forms
             bool existe = false; //Variablep ara chequear si el producto ya esta en el carrito
             if(e.KeyChar == '\r')
             {
-                busqueda = db.Buscar(textBoxCodigo.Text); //Buscamos el producto en la base de datos
+                busqueda = cdp.Buscar(textBoxCodigo.Text); //Buscamos el producto en la base de datos
                 if (busqueda.Rows.Count > 0)
                 {
                     Producto p = new Producto //Guardamos los datos de la busqueda en un nuevo objeto
