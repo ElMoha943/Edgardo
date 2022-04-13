@@ -21,7 +21,7 @@ namespace Edgardo.Datos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
-                    command.CommandText = "SELECT * FROM productos";
+                    command.CommandText = "SELECT * FROM producto";
                     leer = command.ExecuteReader();
                     tabla.Load(leer);
                     return tabla;
@@ -38,7 +38,7 @@ namespace Edgardo.Datos
                 using (var command = new SqlCommand())
                 {
                     //insert into productos values('coca','1 litro','Cocacola',100,10);
-                    command.CommandText = @"INSERT INTO productos VALUES(@id,@nombre,@precio,@stock)";
+                    command.CommandText = @"INSERT INTO producto VALUES(@id,@nombre,@precio,@stock)";
                     command.Parameters.Add("@id", System.Data.SqlDbType.VarChar).Value = id;
                     command.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = nombre;
                     command.Parameters.Add("@precio", System.Data.SqlDbType.Decimal).Value = precio;
@@ -57,7 +57,7 @@ namespace Edgardo.Datos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
-                    command.CommandText = @"UPDATE productos SET nombre=@nombre, precio=@precio, stock=@stock WHERE id =@id";
+                    command.CommandText = @"UPDATE producto SET nombre=@nombre, precio=@precio, stock=@stock WHERE id =@id";
                     command.Parameters.Add("@id", System.Data.SqlDbType.VarChar).Value = id;
                     command.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = nombre;
                     command.Parameters.Add("@precio", System.Data.SqlDbType.Decimal).Value = precio;
@@ -75,7 +75,7 @@ namespace Edgardo.Datos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
-                    command.CommandText = @"DELETE FROM productos WHERE id=@id";
+                    command.CommandText = @"DELETE FROM producto WHERE id=@id";
                     command.Parameters.Add("@id", System.Data.SqlDbType.VarChar).Value = id;
                     command.ExecuteNonQuery();
                 }
@@ -90,7 +90,7 @@ namespace Edgardo.Datos
                 connection.Open();
                 using (var command = new SqlCommand())
                 {
-                    command.CommandText = @"SELECT * FROM productos WHERE id=@id";
+                    command.CommandText = @"SELECT * FROM producto WHERE id=@id";
                     command.Parameters.Add("@id", System.Data.SqlDbType.VarChar).Value = id;
                     leer = command.ExecuteReader();
                     tabla.Load(leer);                   

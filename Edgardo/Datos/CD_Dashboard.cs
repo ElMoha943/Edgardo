@@ -164,24 +164,5 @@ namespace Edgardo.Models
                 }
             }
         }
-
-        public DataTable getProductById(string id)
-        {
-            using (var connection = GetConnection())
-            {
-                connection.Open();
-                using (var command = new SqlCommand())
-                {
-                    command.Connection = connection;
-
-                    command.CommandText = @"SELECT * FROM PRODUCTO WHERE id=@id";
-                    command.Parameters.Add("@id", System.Data.SqlDbType.VarChar).Value = id;
-                    var reader = command.ExecuteReader();
-                    DataTable resultTable = new DataTable();
-                    resultTable.Load(reader);
-                    return resultTable;
-                }
-            }
-        }
     }
 }

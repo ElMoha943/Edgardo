@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Edgardo.Datos;
 using Edgardo.Models;
 
 namespace Edgardo.Forms
@@ -20,7 +21,7 @@ namespace Edgardo.Forms
     }
     public partial class FormRegister : Form
     {
-        CD_Dashboard db = new CD_Dashboard();
+        CD_Producto db = new CD_Producto();
         DataTable busqueda;
         List<product> products = new List<product>();
         public decimal total = 0;
@@ -56,7 +57,7 @@ namespace Edgardo.Forms
             bool existe = false; //Variablep ara chequear si el producto ya esta en el carrito
             if(e.KeyChar == '\r')
             {
-                busqueda = db.getProductById(textBoxCodigo.Text); //Buscamos el producto en la base de datos
+                busqueda = db.Buscar(textBoxCodigo.Text); //Buscamos el producto en la base de datos
                 if (busqueda.Rows.Count > 0)
                 {
                     Producto p = new Producto //Guardamos los datos de la busqueda en un nuevo objeto
