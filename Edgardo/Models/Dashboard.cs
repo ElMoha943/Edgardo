@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -164,7 +165,7 @@ namespace Edgardo.Models
             }
         }
 
-        public Producto getProductById(string id)
+        public DataTable getProductById(string id)
         {
             using (var connection = GetConnection())
             {
@@ -176,18 +177,9 @@ namespace Edgardo.Models
                     command.CommandText = @"SELECT * FROM PRODUCTO WHERE id=@id";
                     command.Parameters.Add("@id", System.Data.SqlDbType.VarChar).Value = id;
                     var reader = command.ExecuteReader();
-                    Producto p = new Producto();
-                    while (reader.Read())
-                    {
-                        p =new Producto
-                        {
-                            Id = (string)reader[0],
-                            Name = (string)reader[1],
-                            Price = (decimal)reader[2],
-                            Stock = (int)reader[3],
-                        };
-                    }
-                    return p;
+                    DataTable resultTable = new DataTable();
+                    resultTable.Load(reader);
+                    return resultTable;
                 }
             }
         }

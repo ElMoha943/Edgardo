@@ -12,39 +12,26 @@ using Edgardo.Models;
 
 namespace Edgardo.Forms
 {
+    public class product
+    {
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public int Quantity { get; set; }
+    }
     public partial class FormRegister : Form
     {
         Dashboard db = new Dashboard();
-        BindingList<product> products = new BindingList<product>();
-        Venta v = new Venta();
-        struct product
-        {
-            public string name;
-            public int quantity;
-            public decimal price;
-        }
+        DataTable busqueda;
+        List<product> products = new List<product>();
+        public decimal total = 0;
 
         public FormRegister()
         {
             InitializeComponent();
+
+            //Configuracion del DGV
             dgvTicket.Columns.Add("Producto", "Producto");
             dgvTicket.Columns.Add("Precio", "Precio");
-
-            //TEST
-            products.Add(new product
-            {
-                name = "Test",
-                quantity = 12,
-                price = (decimal)10.50,
-            });
-            products.Add(new product
-            {
-                name = "Test2",
-                quantity = 5,
-                price = (decimal)3.75,
-            });
-            v.Total = (decimal)(5 * 3.75 + 12 * 10.5);
-
             dgvTicket.DataSource = products;
         }
 
@@ -52,25 +39,62 @@ namespace Edgardo.Forms
         {
             printPreviewDialog1.Document = printDocument1;
             printPreviewDialog1.ShowDialog();
+
+            Venta v = new Venta
+            {
+                Fecha = DateTime.Now,
+                Total = total
+            };
+
+            //Insertar venta en base de datos!
+
+            total = 0;
         }
 
         private void textBoxCodigo_KeyPress(object sender, KeyPressEventArgs e)
         {
+            bool existe = false; //Variablep ara chequear si el producto ya esta en el carrito
             if(e.KeyChar == '\r')
             {
-                Producto p;
-                try
+                busqueda = db.getProductById(textBoxCodigo.Text); //Buscamos el producto en la base de datos
+                if (busqueda.Rows.Count > 0)
                 {
-                    p = db.getProductById(textBoxCodigo.Text);   
+                    Producto p = new Producto //Guardamos los datos de la busqueda en un nuevo objeto
+                    {
+                        Id = busqueda.Rows[0].ToString(),
+                        Name = busqueda.Rows[1].ToString(),
+                        Price = Convert.ToDecimal(busqueda.Rows[2].ToString()),
+                        Stock = Convert.ToInt32(busqueda.Rows[3].ToString())
+                    };
+
+                    //Actualizamos los labels del formulario
+                    labelNombre.Text = p.Name;
+                    labelCosto.Text = p.Price.ToString();
+
+                    for(int i=0; i<products.Count; i++)
+                    {
+                        if (products[i].Name == p.Name) //Si el producto esta en el carro, aumentamos su cantidad
+                        {
+                            products[i].Quantity += 1;
+                            existe = true;
+                            break;
+                        }
+                    }
+
+                    if (!existe) products.Add(new product //Si el producto no esta en el carro, lo añadimos
+                    {
+                        Name = p.Name,
+                        Price = p.Price,
+                        Quantity = 1
+                    });
+
+                    total += p.Price; //Agregamos el precio del producto al total.
+                    labelTotal.Text = total.ToString();
                 }
-                catch (Exception ex)
+                else //Si el producto no existe tiramos un error.
                 {
-                    MessageBox.Show(ex.Message);
-                    return;
+                    MessageBox.Show("Producto no encontrado");
                 }
-                labelNombre.Text = p.Name;
-                labelCosto.Text = p.Price.ToString();
-                dgvTicket.Rows.Add(p.Name, p.Price);
                 textBoxCodigo.Texts = "";
             }
         }
@@ -108,15 +132,15 @@ namespace Edgardo.Forms
             foreach (product p in products)
             {
                 line += 10;
-                e.Graphics.DrawString(p.name, new Font("Arial", 6, FontStyle.Bold), Brushes.Black, new Point(8, line));
-                e.Graphics.DrawString(p.quantity.ToString(), new Font("Arial", 6, FontStyle.Bold), Brushes.Black, new Point(70, line));
-                e.Graphics.DrawString("$" + p.price, new Font("Arial", 6, FontStyle.Bold), Brushes.Black, new Point(105, line));
-                e.Graphics.DrawString("$"+p.price * p.quantity, new Font("Arial", 6, FontStyle.Bold), Brushes.Black, new Point(145, line));
+                e.Graphics.DrawString(p.Name, new Font("Arial", 6, FontStyle.Bold), Brushes.Black, new Point(8, line));
+                e.Graphics.DrawString(p.Quantity.ToString(), new Font("Arial", 6, FontStyle.Bold), Brushes.Black, new Point(70, line));
+                e.Graphics.DrawString("$" + p.Price, new Font("Arial", 6, FontStyle.Bold), Brushes.Black, new Point(105, line));
+                e.Graphics.DrawString("$"+p.Price * p.Quantity, new Font("Arial", 6, FontStyle.Bold), Brushes.Black, new Point(145, line));
             }
             line += 6;
             e.Graphics.DrawString("---------------------------------------------", new Font("Arial", 8, FontStyle.Regular), Brushes.Black, new Point(8, line));
             line += 8;
-            e.Graphics.DrawString("TOTAL: $"+v.Total, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(8, line));
+            e.Graphics.DrawString("TOTAL: $"+total, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(8, line));
         }
     }
 }
