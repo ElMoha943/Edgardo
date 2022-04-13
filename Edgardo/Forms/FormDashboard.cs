@@ -13,7 +13,7 @@ namespace Edgardo
 {
     public partial class FormDashboard : Form
     {
-        Dashboard dboard = new Dashboard();
+        CD_Dashboard dboard = new CD_Dashboard();
         public FormDashboard()
         {
             InitializeComponent();

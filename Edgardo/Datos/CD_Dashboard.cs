@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Edgardo.Models
 {
-    public class Dashboard : DB
+    public class CD_Dashboard : DB
     {
         //Fields & Prperties
 
@@ -25,7 +25,7 @@ namespace Edgardo.Models
         public decimal Ganancias = 0;
 
         //Constructor
-        public Dashboard()
+        public CD_Dashboard()
         {
             GetNumberItems();
         }

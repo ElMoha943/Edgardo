@@ -20,7 +20,7 @@ namespace Edgardo.Forms
     }
     public partial class FormRegister : Form
     {
-        Dashboard db = new Dashboard();
+        CD_Dashboard db = new CD_Dashboard();
         DataTable busqueda;
         List<product> products = new List<product>();
         public decimal total = 0;
