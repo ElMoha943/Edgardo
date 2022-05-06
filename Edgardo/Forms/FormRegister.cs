@@ -31,7 +31,7 @@ namespace Edgardo.Forms
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            if (products != null)
+            if (products.Count > 0)
             {
                 printPreviewDialog1.Document = printDocument1;
                 printPreviewDialog1.ShowDialog();
@@ -40,6 +40,7 @@ namespace Edgardo.Forms
                 cdv.Insertar(DateTime.Now, total, products);
 
                 total = 0;
+                products.Clear();
 
                 dgvTicket.Update();
                 dgvTicket.Refresh();
@@ -54,54 +55,64 @@ namespace Edgardo.Forms
             }
         }
 
-        private void textBoxCodigo_KeyPress(object sender, KeyPressEventArgs e)
-        {  
+        private void addToCart()
+        {
             bool existe = false; //Variablep ara chequear si el producto ya esta en el carrito
-            if(e.KeyChar == '\r')
+            busqueda.Clear();
+            busqueda = cdp.Buscar(textBoxCodigo.Texts); //Buscamos el producto en la base de datos
+            if (busqueda.Rows.Count > 0)
             {
-                busqueda.Clear();
-                busqueda = cdp.Buscar(textBoxCodigo.Texts); //Buscamos el producto en la base de datos
-                if (busqueda.Rows.Count > 0)
+                Producto p = new Producto //Guardamos los datos de la busqueda en un nuevo objeto
                 {
-                    Producto p = new Producto //Guardamos los datos de la busqueda en un nuevo objeto
-                    {
-                        Id = busqueda.Rows[0][0].ToString(),
-                        Name = busqueda.Rows[0][1].ToString(),
-                        Price = Convert.ToDecimal(busqueda.Rows[0][2].ToString()),
-                        Stock = Convert.ToInt32(busqueda.Rows[0][3].ToString())
-                    };
+                    Id = busqueda.Rows[0][0].ToString(),
+                    Name = busqueda.Rows[0][1].ToString(),
+                    Price = Convert.ToDecimal(busqueda.Rows[0][2].ToString()),
+                    Stock = Convert.ToInt32(busqueda.Rows[0][3].ToString())
+                };
 
-                    //Actualizamos los labels del formulario
-                    labelNombre.Text = "Producto: "+p.Name;
-                    labelCosto.Text = "Costo: $"+p.Price;
+                //Actualizamos los labels del formulario
+                labelNombre.Text = "Producto: " + p.Name;
+                labelCosto.Text = "Costo: $" + p.Price;
 
-                    for(int i=0; i<products.Count; i++)
+                for (int i = 0; i < products.Count; i++)
+                {
+                    if (products[i].Name == p.Name) //Si el producto esta en el carro, aumentamos su cantidad
                     {
-                        if (products[i].Name == p.Name) //Si el producto esta en el carro, aumentamos su cantidad
-                        {
-                            products[i].Quantity += 1;
-                            existe = true;
-                            break;
-                        }
+                        products[i].Quantity += 1;
+                        existe = true;
+                        break;
                     }
-
-                    if (!existe) products.Add(new product //Si el producto no esta en el carro, lo añadimos
-                    {
-                        Name = p.Name,
-                        Price = p.Price,
-                        Quantity = 1
-                    });
-
-                    total += p.Price; //Agregamos el precio del producto al total.
-                    labelTotal.Text = "Total: $"+total;
                 }
-                else //Si el producto no existe tiramos un error.
+
+                if (!existe) products.Add(new product //Si el producto no esta en el carro, lo añadimos
                 {
-                    MessageBox.Show("Producto no encontrado");
-                }
-                textBoxCodigo.Texts = "";        
-                dgvTicket.Update();
-                dgvTicket.Refresh();
+                    Name = p.Name,
+                    Price = p.Price,
+                    Quantity = 1
+                });
+
+                total += p.Price; //Agregamos el precio del producto al total.
+                labelTotal.Text = "Total: $" + total;
+            }
+            else //Si el producto no existe tiramos un error.
+            {
+                MessageBox.Show("Producto no encontrado");
+            }
+            textBoxCodigo.Texts = "";
+            dgvTicket.Update();
+            dgvTicket.Refresh();
+        }
+
+        private void remProduct()
+        {
+            if (dgvTicket.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow r in dgvTicket.SelectedRows)
+                {
+                    total -= ((decimal)r.Cells[1].Value) * (int)r.Cells[2].Value; 
+                    labelTotal.Text = "Total: $" + total;
+                    products.Remove(products[r.Index]);
+                }    
             }
         }
 
@@ -149,12 +160,38 @@ namespace Edgardo.Forms
             e.Graphics.DrawString("TOTAL: $"+total, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(8, line));
         }
 
-        private void textBoxCodigo_MouseClick(object sender, MouseEventArgs e)
+        //private void textBoxCodigo_MouseClick(object sender, MouseEventArgs e)
+        //{
+        //    if(textBoxCodigo.Texts == "Codigo del producto...")
+        //    {
+        //        textBoxCodigo.Texts = "";
+        //    }
+        //}
+
+        private void textBoxCodigo_MouseEnter(object sender, EventArgs e)
         {
-            if(textBoxCodigo.Texts == "Codigo del producto...")
+            if (textBoxCodigo.Texts == "Codigo del producto...")
             {
                 textBoxCodigo.Texts = "";
             }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            remProduct();
+        }
+
+        private void textBoxCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                addToCart();
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            addToCart();
         }
     }
 

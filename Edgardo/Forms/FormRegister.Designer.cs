@@ -70,7 +70,7 @@
             this.textBoxCodigo.Texts = "Codigo del producto...";
             this.textBoxCodigo.UnderlinedStyle = false;
             this.textBoxCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCodigo_KeyPress);
-            this.textBoxCodigo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxCodigo_MouseClick);
+            this.textBoxCodigo.MouseEnter += new System.EventHandler(this.textBoxCodigo_MouseEnter);
             // 
             // btnAdd
             // 
@@ -85,6 +85,7 @@
             this.btnAdd.Size = new System.Drawing.Size(50, 50);
             this.btnAdd.TabIndex = 3;
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnRemove
             // 
@@ -99,6 +100,7 @@
             this.btnRemove.Size = new System.Drawing.Size(50, 50);
             this.btnRemove.TabIndex = 4;
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnPrint
             // 
@@ -144,9 +146,9 @@
             this.labelTotal.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotal.Location = new System.Drawing.Point(510, 315);
             this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(189, 33);
+            this.labelTotal.Size = new System.Drawing.Size(159, 33);
             this.labelTotal.TabIndex = 8;
-            this.labelTotal.Text = "Total: $420,69";
+            this.labelTotal.Text = "Total: $0,00";
             // 
             // btnClear
             // 

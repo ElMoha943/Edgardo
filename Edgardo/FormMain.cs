@@ -71,12 +71,12 @@ namespace Edgardo
 
         private void btnClients_Click(object sender, EventArgs e)
         {
-            OpenChildForm("Clients");
+            //OpenChildForm("Clients");
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            OpenChildForm("Settings");
+            //OpenChildForm("Settings");
         }
     }
 }

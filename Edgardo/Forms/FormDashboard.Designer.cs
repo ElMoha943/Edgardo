@@ -118,6 +118,7 @@
             this.labelPercentageSales.Size = new System.Drawing.Size(34, 16);
             this.labelPercentageSales.TabIndex = 12;
             this.labelPercentageSales.Text = "+10%";
+            this.labelPercentageSales.Visible = false;
             // 
             // labelCountSales
             // 
@@ -176,6 +177,7 @@
             this.labelPercentageIncome.Size = new System.Drawing.Size(34, 16);
             this.labelPercentageIncome.TabIndex = 15;
             this.labelPercentageIncome.Text = "+10%";
+            this.labelPercentageIncome.Visible = false;
             // 
             // labelCountIncome
             // 
@@ -234,6 +236,7 @@
             this.labelPercentageProfit.Size = new System.Drawing.Size(34, 16);
             this.labelPercentageProfit.TabIndex = 18;
             this.labelPercentageProfit.Text = "+10%";
+            this.labelPercentageProfit.Visible = false;
             // 
             // labelCountProfit
             // 
@@ -244,6 +247,7 @@
             this.labelCountProfit.Size = new System.Drawing.Size(21, 16);
             this.labelCountProfit.TabIndex = 17;
             this.labelCountProfit.Text = "53";
+            this.labelCountProfit.Visible = false;
             // 
             // ipbProfit
             // 
